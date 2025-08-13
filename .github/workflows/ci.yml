@@ -11,16 +11,16 @@ on:
 
 jobs:
   build-java:
-
     runs-on: ubuntu-latest
-    
-    steps:
-    - uses: actions/checkout@v2
 
-    - name: Set up JDK 1.8
-      uses: actions/setup-java@v1
+    steps:
+    - uses: actions/checkout@v4.0.0
+
+    - name: Set up JDK 8
+      uses: actions/setup-java@v4.7.1
       with:
-        java-version: 1.8
+        distribution: temurin
+        java-version: 8
 
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
@@ -31,8 +31,7 @@ jobs:
     - name: Build and Push Docker Image
       uses: mr-smithers-excellent/docker-build-push@v4
       with:
-        image: nanajanashia/demo-app
+        image: fela14/actions-demo-app
         registry: docker.io
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-         
