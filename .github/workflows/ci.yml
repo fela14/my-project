@@ -49,4 +49,9 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
 
   publish:
-      needs: build  
+  needs: build
+  runs-on: ubuntu-latest
+  steps:
+    - name: Placeholder
+      run: echo "Publish job will go here"
+
